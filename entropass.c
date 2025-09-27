@@ -192,7 +192,7 @@ int main(int argc, char *argv[])
 
     if(is_secure)
     {
-        printf("Password is Secure\n")
+        printf("Password is Secure\n");
     }
     
     return 0;
