@@ -1,6 +1,5 @@
 <div id="top">
 
-<!-- HEADER STYLE: CLASSIC -->
 <div align="middle">
 
 <p align="center">
@@ -31,6 +30,7 @@ EntroPass is a command-line tool written in C that evaluates password strength b
 - **Character Set Analysis**: Identifies the use of lowercase letters, uppercase letters, digits, and special symbols.
 - **Strength Rating**: Categorizes password strength as Very Weak, Weak, Good, Strong, or Excellent based on entropy.
 - **Crack Time Estimation**: Estimates brute-force cracking time for traditional CPUs, modern GPUs, and theoretical quantum computers (using Grover's algorithm for quantum estimation).
+- **Secure Password Generation**: Generate secure password if user provided password is not secure.
 - **User-Friendly Output**: Provides a detailed analysis of the password, including length, character sets used, entropy, estimated cracking times, and password improvement suggestions.
 
 ## Installation
@@ -84,6 +84,10 @@ Time to Crack (Quantom Capability according to Grovers Algorithm): 0.01 seconds
 --- Password Improvement Suggestions ---
 
 Increase password length to at least 12 characters.
+
+--- Generating a Secure Password ---
+
+Suggested Secure Password: 7vJf{LyYp-+VBN
 ```
 
 ## How It Works
@@ -92,23 +96,23 @@ Increase password length to at least 12 characters.
 3. **Entropy Calculation**: Uses the formula `E = L * log2(R)` to compute entropy, where:
    - `L` is the password length.
    - `R` is the size of the character set (e.g., 26 for lowercase, 26 for uppercase, 10 for digits, 32 for symbols).
-4. **Strength Assessment**: Rates the password based on entropy thresholds:
+4. **Secure Random Password Generation**: Secure random password generation based on user password validation. 
+5. **Strength Assessment**: Rates the password based on entropy thresholds:
    - < 40 bits: Very Weak
    - 40–59 bits: Weak
    - 60–79 bits: Good
    - 80–99 bits: Strong
    - ≥ 100 bits: Excellent
-5. **Crack Time Estimation**:
+6. **Crack Time Estimation**:
    - Calculates total possible combinations (`R^L`).
    - Estimates cracking time for:
     
-
-6. **System**
+7. **System**
      - **Traditional CPU**: Assumes 1 billion guesses per second. 
      - **Modern GPU**: Assumes 100 billion guesses per second. 
      - **Quantum Computer**: Uses Grover's algorithm, estimating time based on the square root of possibilities divided by 1 quintillion operations per second. 
      
-7. **Time Formatting**: Converts raw seconds into human-readable units (seconds, minutes, hours, days, years, or "effectively infinite" for >10,000 years).
+8. **Time Formatting**: Converts raw seconds into human-readable units (seconds, minutes, hours, days, years, or "effectively infinite" for >10,000 years).
 
 ## Dependencies
 - **C Standard Library**: For string manipulation, input/output, and math functions.
