@@ -4,6 +4,7 @@
 #include <string.h>
 #include <math.h>
 #include <ctype.h>
+#include <time.h>
 
 // Define the size of each character set
 #define LOWERCASE_SIZE 26
@@ -18,6 +19,7 @@
 
 //Function protype
 void print_time(double seconds);
+void generate_password(int length);
 
 // Main function to run the password strength checker.
 int main(int argc, char *argv[]) 
@@ -194,6 +196,11 @@ int main(int argc, char *argv[])
     {
         printf("Password is Secure\n");
     }
+    else
+    {
+        printf("\n--- Generating a Secure Password ---\n\n");
+        generate_password(16);
+    }
     
     return 0;
 }
@@ -225,4 +232,41 @@ void print_time(double seconds)
     {
         printf("More than 10,000 years (effectively infinite)\n");
     }
+}
+
+// Generate a secure random password
+void generate_password(int length)
+{
+    const char lowercase[] = "abcdefghijklmnopqrstuvwxyz";
+    const char uppercase[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const char digits[] = "0123456789";
+    const char symbols[] = "!@#$%^&*()_+-=[]{}|<>?";
+
+    srand(time(NULL)); 
+    char password[100];
+    int i;
+
+    //Ensure each character type
+    password[0] = lowercase[rand() % LOWERCASE_SIZE];
+    password[1] = uppercase[rand() % UPPERCASE_SIZE];
+    password[2] = digits[rand() % DIGIT_SIZE];
+    password[3] = symbols[rand() % SYMBOL_SIZE];
+
+    // Fill the rest with random characters from all sets
+    const char *all_chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
+    int all_chars_size = LOWERCASE_SIZE + UPPERCASE_SIZE + DIGIT_SIZE + SYMBOL_SIZE;
+    for (i = 4; i < length; i++) {
+        password[i] = all_chars[rand() % all_chars_size];
+    }
+    password[length] = '\0';
+
+    // Shuffle the password
+    for (int j = length - 1; j > 0; j--) {
+        int k = rand() % (j + 1);
+        char temp = password[j];
+        password[j] = password[k];
+        password[k] = temp;
+    }
+
+    printf("Suggested Secure Password: %s\n", password);
 }
