@@ -110,7 +110,7 @@ Suggested Secure Password: 7vJf{LyYp-+VBN
 7. **System**
      - **Traditional CPU**: Assumes 1 billion guesses per second. 
      - **Modern GPU**: Assumes 100 billion guesses per second. 
-     - **Quantum Computer**: Uses Grover's algorithm, estimating time based on the square root of possibilities divided by 1 quintillion operations per second. 
+     - **Quantum Computation**: Uses Grover's algorithm, estimating time based on the square root of possibilities divided by 1 quintillion operations per second. 
      
 8. **Time Formatting**: Converts raw seconds into human-readable units (seconds, minutes, hours, days, years, or "effectively infinite" for >10,000 years).
 
